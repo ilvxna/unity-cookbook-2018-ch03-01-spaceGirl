@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 1230259309}
   - component: {fileID: 1230259313}
   - component: {fileID: 1230259314}
+  - component: {fileID: 1230259315}
   m_Layer: 0
   m_Name: player-girl1
   m_TagString: Untagged
@@ -503,7 +504,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1230259308}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 229ef0469c516df40943ea11920a2a7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 68ca45e4b52d40748b2819ed5971fa29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1230259315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1230259308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a416923b3646494eb99eb11bcfce5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   starText: {fileID: 1829763084}
