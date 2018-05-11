@@ -7,13 +7,13 @@ public class PlayerInventory : MonoBehaviour {
 
 	private PlayerInventoryDisplay playerInventoryDisplay;
 
-	private bool carringStar = false;
+	private int totalStars = 0;
 
 	// Use this for initialization
 	void Start () {
 		playerInventoryDisplay = this.gameObject.GetComponent<PlayerInventoryDisplay>();
 
-		playerInventoryDisplay.onChangeCarringStar(carringStar);
+		
 	}
 	
 	// Update is called once per frame
@@ -24,9 +24,9 @@ public class PlayerInventory : MonoBehaviour {
 	{
 		if (collision.CompareTag("Star"))
 		{
-			carringStar = true;
+			totalStars++;
 
-			playerInventoryDisplay.onChangeCarringStar(carringStar);
+			playerInventoryDisplay.OnChangeStarTotal(totalStars);
 
 			Destroy(collision.gameObject);
 		}

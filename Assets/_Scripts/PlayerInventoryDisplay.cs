@@ -5,17 +5,23 @@ using UnityEngine.UI;
 public class PlayerInventoryDisplay : MonoBehaviour {
 
 
-	public Text starText;
-	public void onChangeCarringStar(bool carringStar)
+	public Image[] starPlaceholders;
+
+	public Sprite iconStarYellow;
+
+	public Sprite iconStarGrey;
+	
+	public void OnChangeStarTotal(int starTotal)
 	{
-		string starMsg = "no star:-(";
-
-		if (carringStar)
+		for (int i = 0; i < starPlaceholders.Length; ++i)
 		{
-			starMsg = "Carring Star :-)";
+			if (i < starTotal)
+			{
+				starPlaceholders[i].sprite = iconStarYellow;
+			}
+			else
+
+				starPlaceholders[i].sprite = iconStarGrey;
 		}
-		starText.text = starMsg;
 	}
-
-
 }
