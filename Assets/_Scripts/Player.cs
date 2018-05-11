@@ -1,31 +1,27 @@
-﻿using System;
+﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
-public class Player : MonoBehaviour {
+using System.Collections.Generic;
 
+public class Player : MonoBehaviour
+{
 	private PlayerInventoryDisplay playerInventoryDisplay;
+	private List<PickUp> inventory = new List<PickUp>();
 
-
-	private int totalStars = 0;
-
-	void Star()
+	void Start()
 	{
-		playerInventoryDisplay = this.gameObject.GetComponent<PlayerInventoryDisplay>();
+		playerInventoryDisplay = GetComponent<PlayerInventoryDisplay>();
+		playerInventoryDisplay.OnChangeInventory(inventory);
 	}
 
-	
-	private void OnTriggerEnter2D(Collider2D collision)
+	void OnTriggerEnter2D(Collider2D hit)
 	{
-		if (collision.CompareTag("Star"))
+		if (hit.CompareTag("PickUp"))
 		{
-			totalStars++;
-			playerInventoryDisplay.OnChangeStarTotal(totalStars);
-
-			
-				Destroy(collision.gameObject);
-		}		
-	} 
-
+			PickUp item = hit.GetComponent<PickUp>();
+			inventory.Add(item);
+			playerInventoryDisplay.OnChangeInventory(inventory);
+			Destroy(hit.gameObject);
+		}
+	}
 }

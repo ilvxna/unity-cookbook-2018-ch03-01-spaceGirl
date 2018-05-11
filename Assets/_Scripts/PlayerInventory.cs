@@ -26,7 +26,7 @@ public class PlayerInventory : MonoBehaviour {
 		{
 			totalStars++;
 
-			playerInventoryDisplay.OnChangeStarTotal(totalStars);
+			//playerInventoryDisplay.OnChangeStarTotal(totalStars);
 
 			Destroy(collision.gameObject);
 		}
