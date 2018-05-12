@@ -5,14 +5,12 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
-	private PlayerInventoryDisplay playerInventoryDisplay;
+	private InventoryManager inventoryManager;
 
-	private List<PickUp> inventory = new List<PickUp>();
 
 	private void Start()
 	{
-		playerInventoryDisplay = GetComponent<PlayerInventoryDisplay>();
-		playerInventoryDisplay.OnChangeInventory(inventory);
+		inventoryManager = GetComponent<InventoryManager>();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -23,10 +21,9 @@ public class Player : MonoBehaviour
 
 			if (item!=null)
 			{
-				inventory.Add(item);
+				inventoryManager.Add(item);
 			}
-			playerInventoryDisplay.OnChangeInventory(inventory);
-
+			
 			Destroy(collision.gameObject);
 		}
 	}

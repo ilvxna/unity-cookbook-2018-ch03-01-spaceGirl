@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour {
 
-	public string description;
+	public PickUpType type;
+
+	public enum PickUpType
+	{
+		Star,Key,Heart
+	}
 }
