@@ -6,22 +6,28 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour
 {
 	private PlayerInventoryDisplay playerInventoryDisplay;
+
 	private List<PickUp> inventory = new List<PickUp>();
 
-	void Start()
+	private void Start()
 	{
 		playerInventoryDisplay = GetComponent<PlayerInventoryDisplay>();
 		playerInventoryDisplay.OnChangeInventory(inventory);
 	}
 
-	void OnTriggerEnter2D(Collider2D hit)
+	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (hit.CompareTag("PickUp"))
+		if (collision.CompareTag("PickUp"))
 		{
-			PickUp item = hit.GetComponent<PickUp>();
-			inventory.Add(item);
+			PickUp item = collision.GetComponent<PickUp>();
+
+			if (item!=null)
+			{
+				inventory.Add(item);
+			}
 			playerInventoryDisplay.OnChangeInventory(inventory);
-			Destroy(hit.gameObject);
+
+			Destroy(collision.gameObject);
 		}
 	}
 }
