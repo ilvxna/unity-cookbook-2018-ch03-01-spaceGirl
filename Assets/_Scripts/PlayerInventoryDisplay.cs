@@ -17,6 +17,21 @@ public class PlayerInventoryDisplay : MonoBehaviour
 	public GameObject starSlotPrefab;
 	private Text inventoryText;
 
+	private void Start()
+	{
+		float panelWidth = slotGrid.GetComponent<RectTransform>().rect.width;
+
+		print("slotGrid.GetComponent<RectTransform>().rect= " + slotGrid.GetComponent<RectTransform>().rect);
+
+		GridLayoutGroup gridLayoutGroup = slotGrid.GetComponent<GridLayoutGroup>();
+
+		float xCellSize = panelWidth / NUM_INVENTORY_SLOTS;
+
+		xCellSize -= gridLayoutGroup.spacing.x;
+
+		gridLayoutGroup.cellSize = new Vector2(xCellSize, xCellSize);
+
+	}
 	private void Awake()
 	{
 		for (int i = 0; i < NUM_INVENTORY_SLOTS; i++)
