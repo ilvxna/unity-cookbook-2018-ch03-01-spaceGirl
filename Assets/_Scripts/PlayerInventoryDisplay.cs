@@ -6,12 +6,30 @@ using System;
 
 public class PlayerInventoryDisplay : MonoBehaviour
 {
-	public Text inventoryText;
+	
 
 	const int NUM_INVENTORY_SLOTS = 10;
 
-	public PickupUI[] slots = new PickupUI[NUM_INVENTORY_SLOTS];
+	private PickupUI[] slots = new PickupUI[NUM_INVENTORY_SLOTS];
 
+	public GameObject slotGrid;
+
+	public GameObject starSlotPrefab;
+	private Text inventoryText;
+
+	private void Awake()
+	{
+		for (int i = 0; i < NUM_INVENTORY_SLOTS; i++)
+		{
+			GameObject starSlotGo = (GameObject)Instantiate(starSlotPrefab);
+			///设置父节点在Grid上面
+			starSlotGo.transform.SetParent(slotGrid.transform);
+
+			starSlotGo.transform.localScale = new Vector3(1, 1, 1);
+
+			slots[i] = starSlotGo.GetComponent<PickupUI>();
+		}
+	}
 	public void OnChangeInventory(Dictionary<PickUp.PickUpType,int> inventory)
 	{
 		/* 
